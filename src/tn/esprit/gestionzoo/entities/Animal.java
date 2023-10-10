@@ -34,6 +34,7 @@ public class Animal {
             }
         }
 
+
         public boolean isMammal() {
             return isMammal;
         }
@@ -63,4 +64,6 @@ public class Animal {
         }
 
     }
+
+
 
