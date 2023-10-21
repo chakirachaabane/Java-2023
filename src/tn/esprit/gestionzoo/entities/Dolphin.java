@@ -1,7 +1,14 @@
 package tn.esprit.gestionzoo.entities;
 
-public class Dolphin extends Aquatic{
-    protected float swimmingSpeed;
+public final  class Dolphin extends Aquatic{
+    private float swimmingSpeed;
+    public float getSwimmingSpeed() {
+        return swimmingSpeed;
+    }
+
+    public void setSwimmingSpeed(float swimmingSpeed) {
+        this.swimmingSpeed = swimmingSpeed;
+    }
 
     public Dolphin(){
 

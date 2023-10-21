@@ -62,22 +62,41 @@ public class Main {
         */
 
         // Instruction 22
-        Aquatic aquatic1= new Aquatic("fish", "Yaghorta", 10, true,"Tunisia");
+       // Aquatic aquatic1= new Aquatic("fish", "Yaghorta", 10, true,"Tunisia"); //classe abstract
         Terrestrial terrestrial1 =new Terrestrial("cat2", "Yaghorta1", 10, true,4);
         Dolphin dolphin1 = new Dolphin("cat", "Yaghorta", 10, true,"Tunisia",11);
+        Dolphin dolphin2 = new Dolphin("cat", "Yaghorta22", 10, true,"Tunisia",11);
         Penguin penguin1 = new Penguin("cat2", "Yaghorta1", 5, true,"Tunisia",11);
-
+        Penguin penguin2 = new Penguin("cat2", "Yaghorta1", 5, true,"Tunisia",20);
+        Penguin penguin3 = new Penguin("cat2", "Yaghorta1", 10, true,"Tunisia",5);
+        Penguin penguin4 = new Penguin("cat", "Yaghorta1", 5, true,"Tunisia",17);
         // Instruction 23
-        System.out.println(aquatic1.toString());
+       // System.out.println(aquatic1.toString());
         System.out.println(dolphin1.toString());
         System.out.println(penguin1.toString());
 
         // Instruction 24
-        aquatic1.swim();
+       // aquatic1.swim();
         dolphin1.swim();
         penguin1.swim();
 
+        //Instruction 26
+        //myZoo.addAquaticAnimal(aquatic1);
+        myZoo.addAquaticAnimal((Aquatic)dolphin1);
+        myZoo.addAquaticAnimal((Aquatic)dolphin2);
+        myZoo.addAquaticAnimal((Aquatic)penguin1);
+        myZoo.addAquaticAnimal((Aquatic)penguin2);
+        myZoo.addAquaticAnimal((Aquatic)penguin3);
+        myZoo.addAquaticAnimal((Aquatic)penguin1);
 
+        myZoo.showSwimAquatic(); //affiche aquatic animal / dolphin / aquatic animal
+
+
+        System.out.println("la profondeur maximale: "+ myZoo.maxPenguinSwimmingDepth());
+        myZoo.displayNumberOfAquaticsByType();
+        System.out.println(penguin1.equals(dolphin1)); //false
+        System.out.println(penguin1.equals(penguin3)); //false
+        System.out.println(penguin1.equals(penguin4)); //true
 
     }
 }
