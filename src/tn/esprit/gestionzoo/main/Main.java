@@ -20,8 +20,8 @@ public class Main {
         giraffe5.setMammal(true);
         System.out.println(myZoo);
         System.out.println(myZoo.toString());
-        Animal lion = new Animal("cat", "Yaghorta", 10, true);
-        Animal chat = new Animal("cat", "Ragdoola", 10, true);
+        Animal lion = new Animal("cat", "Yaghorta", 2, true);
+        Animal chat = new Animal("cat", "Ragdoola", -10, true);
         Animal chat2 = new Animal("cat", "Maher", 10, true);
         Animal chat3 = new Animal("cat", "Sosi", 10, true);
         Animal rat = new Animal("rat", "Ja3", 10, true);
@@ -33,10 +33,40 @@ public class Main {
         lion.displayAnimal();
         System.out.println(lion);
         System.out.println(lion.toString());
-        System.out.println(myZoo.addAnimal(lion));
-        System.out.println(myZoo.addAnimal(chat));
-        System.out.println(myZoo.addAnimal(rat));
-        System.out.println(myZoo2.addAnimal(chat4));
+//        System.out.println(myZoo.addAnimal(lion));
+//        System.out.println(myZoo.addAnimal(chat));
+//        System.out.println(myZoo.addAnimal(rat));
+//        System.out.println(myZoo2.addAnimal(chat4));
+
+
+        // Instruction 32+33+34 :
+        try{
+            myZoo.addAnimal(lion);
+            System.out.println("Nombre d'animaux dans le zoo: "+myZoo.getNumberOfAnimals());
+            myZoo.addAnimal(giraffe);
+            System.out.println("Nombre d'animaux dans le zoo: "+myZoo.getNumberOfAnimals());
+            myZoo.addAnimal(giraffe2);
+            System.out.println("Nombre d'animaux dans le zoo: "+myZoo.getNumberOfAnimals());
+            myZoo.addAnimal(rat);
+            System.out.println("Nombre d'animaux dans le zoo: "+myZoo.getNumberOfAnimals());
+
+        }catch (ZooFullException e){
+            System.err.println("Erreur:" + e.getMessage());
+        }catch(InvalidAgeException e){
+            System.err.println("Erreur:" + e.getMessage());
+        }
+
+        try{
+            myZoo5.addAnimal(chat);
+            System.out.println("Nombre d'animaux dans le zoo: "+myZoo.getNumberOfAnimals());
+        }catch (ZooFullException e){
+            System.err.println("Erreur:" + e.getMessage());
+        }catch(InvalidAgeException e){
+            System.err.println("Erreur:" + e.getMessage());
+        }
+
+
+
         myZoo.afficherAnimaux();
         System.out.println("l indice est: "+myZoo.searchAnimal(rat1));
         System.out.println(myZoo.addAnimalUnique(chat2));

@@ -4,10 +4,11 @@ public class Zoo {
     private Animal[] animals;
     private String name;
     private String city;
-    private static final int NUMBER_OF_CAGES = 25; // Instruction 14
+    private static final int NUMBER_OF_CAGES = 3; // Instruction 14
 
     private static final int NUMBER_OF_AQUATICS = 10;
     private Aquatic[] aquaticAnimals = new Aquatic[NUMBER_OF_AQUATICS]; // Instruction 25
+    private int nbrAnimals=0;
     private int nbrAquatic = 0;
 
 
@@ -55,15 +56,29 @@ public class Zoo {
     }
 
     //Instruction 10 :
-    public boolean addAnimal(Animal animal) {
-        for (int i = 0; i < NUMBER_OF_CAGES
-                ; i++) {
-            if (animals[i] == null) {
-                animals[i] = animal;
-                return true;
+    public void addAnimal(Animal animal) throws ZooFullException,InvalidAgeException {
+//        for (int i = 0; i < NUMBER_OF_CAGES; i++) {
+//            if (animals[i] == null) {
+//                animals[i] = animal;
+//                return true;
+//            }
+//        }
+//        return false;
+
+        // Instruction 32 + 33 + 34 :
+        if (nbrAnimals<NUMBER_OF_CAGES) {
+            if (animal.getAge() < 0) {
+                throw new InvalidAgeException("L'age de l'animal ne peut pas etre négatif.");
             }
+            animals[nbrAnimals] = animal;
+            nbrAnimals++;
+        }else {
+            throw new ZooFullException("Le zoo est plein, impossible d'ajouter des animaux");
         }
-        return false;
+    }
+
+    public int getNumberOfAnimals(){
+        return nbrAnimals;
     }
 
     //Instruction 8 :
@@ -104,8 +119,7 @@ public class Zoo {
     //Instruction 12 :
     public boolean addAnimalUnique(Animal animal) {
 
-        /*for (int i = 0; i < NUMBER_OF_CAGES
-; i++) {
+        /*for (int i = 0; i < NUMBER_OF_CAGES; i++) {
             if ((animals[i] == null) && (searchAnimal(animal) == -1)) {
                 animals[i] = animal;
                 return true;
