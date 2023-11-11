@@ -94,6 +94,8 @@ public class Main {
         // Instruction 22
        // Aquatic aquatic1= new Aquatic("fish", "Yaghorta", 10, true,"Tunisia"); //classe abstract
         Terrestrial terrestrial1 =new Terrestrial("cat2", "Yaghorta1", 10, true,4);
+        Terrestrial terrestrial2 =new Terrestrial("cat3", "Yaghorta2", 10, true,4);
+        Terrestrial terrestrial3 =new Terrestrial("cat4", "Yaghorta3", 10, true,4);
         Dolphin dolphin1 = new Dolphin("cat", "Yaghorta", 10, true,"Tunisia",11);
         Dolphin dolphin2 = new Dolphin("cat", "Yaghorta22", 10, true,"Tunisia",11);
         Penguin penguin1 = new Penguin("cat2", "Yaghorta1", 5, true,"Tunisia",11);
@@ -127,6 +129,12 @@ public class Main {
         System.out.println(penguin1.equals(dolphin1)); //false
         System.out.println(penguin1.equals(penguin3)); //false
         System.out.println(penguin1.equals(penguin4)); //true
+
+        // Instruction 38:
+        terrestrial1.eatMeat(Food.MEAT);
+        terrestrial1.eatPlant(Food.MEAT);
+        terrestrial1.eatPlantAndMeat(Food.BOTH);
+        penguin1.eatMeat(Food.PLANT);
 
     }
 }
