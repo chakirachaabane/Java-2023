@@ -26,5 +26,27 @@ public class Main {
         System.out.println("**Liste triée par nomDep et grade:");
         societe.displayEmploye();
 
+        IDepartement<Departement> gestionDep = new DepartementHashSet();
+        Departement d0 =new Departement(0,"Dep0",30);
+        Departement d1 =new Departement(1,"Dep1",15);
+        Departement d2 =new Departement(2,"Dep2",20);
+        Departement d3 =new Departement(3,"Dep3",18);
+        Departement d4 =new Departement(4,"Dep4",30);
+
+
+        gestionDep.ajouterDepartement(d4);
+        gestionDep.ajouterDepartement(d1);
+        gestionDep.ajouterDepartement(d0);
+        gestionDep.ajouterDepartement(d2);
+        gestionDep.ajouterDepartement(d3);
+
+        gestionDep.displayDepartement();
+
+        System.out.println("Nom dep existant? "+gestionDep.rechercherDepartement("Dep5"));
+        System.out.println("Departement existant? "+gestionDep.rechercherDepartement(d2));
+        gestionDep.supprimerDepartement(d0);
+        System.out.println("La liste apres supression:");
+        gestionDep.displayDepartement();
+        System.out.println("La liste triée: "+ gestionDep.trierDepartementById());
     }
 }
