@@ -1,5 +1,9 @@
 package tn.esprit.gestionEmploye.main;
 import tn.esprit.gestionEmploye.entities.*;
+
+import java.util.Map;
+import java.util.TreeMap;
+
 public class Main {
     public static void main(String[] args) {
         IGestion<Employe> societe = new SocieteArrayList();
@@ -26,6 +30,7 @@ public class Main {
         System.out.println("**Liste triée par nomDep et grade:");
         societe.displayEmploye();
 
+        //*************************************************        Prosit 10 *************************************************//
         IDepartement<Departement> gestionDep = new DepartementHashSet();
         Departement d0 =new Departement(0,"Dep0",30);
         Departement d1 =new Departement(1,"Dep1",15);
@@ -48,5 +53,43 @@ public class Main {
         System.out.println("La liste apres supression:");
         gestionDep.displayDepartement();
         System.out.println("La liste triée: "+ gestionDep.trierDepartementById());
+//*************************************************        Prosit 11 *************************************************//
+        AffectationHashMap affectationHashMap = new AffectationHashMap();
+        affectationHashMap.ajouterEmployeDepartement(e1,d4);
+        affectationHashMap.ajouterEmployeDepartement(e2, d2);
+        affectationHashMap.ajouterEmployeDepartement(e3, d2);
+        affectationHashMap.ajouterEmployeDepartement(e5, d1);
+
+
+        System.out.println("\nAffichage initial :");
+        affectationHashMap.afficherEmployesEtDepartements();
+
+        affectationHashMap.ajouterEmployeDepartement(e1, d3);
+
+        System.out.println("\nAffichage après la tentative d'ajout du même employé à un autre département :");
+        affectationHashMap.afficherEmployesEtDepartements();
+
+        affectationHashMap.supprimerEmploye(e3);
+        System.out.println("\nAffichage après la suppression d'un employé :");
+        affectationHashMap.afficherEmployesEtDepartements();
+
+        affectationHashMap.supprimerEmployeEtDepartement(e2,d2);
+        System.out.println("\nAffichage après la suppression d'un employé d'un département spécifique :");
+        affectationHashMap.afficherEmployesEtDepartements();
+
+        System.out.println("La liste des employes: ");
+        affectationHashMap.afficherEmployes();
+
+        System.out.println("La liste des departements: ");
+        affectationHashMap.afficherDepartements();
+
+        System.out.println("\nRecherche de l'employé  : " + affectationHashMap.rechercherEmploye(e1));
+        System.out.println("\nRecherche de l'employé  : " + affectationHashMap.rechercherDepartement(d1));
+
+        System.out.println( "La liste triée par l id des employes");
+        TreeMap<Employe,Departement> sortedMap = affectationHashMap.trierMap();
+        for (Map.Entry<Employe, Departement> entry : sortedMap.entrySet()) {
+            System.out.println(entry.getKey().getNom() + " -> " + entry.getValue().getNomDep());
+        }
     }
 }
