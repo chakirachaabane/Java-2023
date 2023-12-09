@@ -1,8 +1,13 @@
 package tn.esprit.gestionEmploye.main;
 import tn.esprit.gestionEmploye.entities.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public class Main {
     public static void main(String[] args) {
@@ -84,12 +89,41 @@ public class Main {
         affectationHashMap.afficherDepartements();
 
         System.out.println("\nRecherche de l'employé  : " + affectationHashMap.rechercherEmploye(e1));
-        System.out.println("\nRecherche de l'employé  : " + affectationHashMap.rechercherDepartement(d1));
+        System.out.println("\nRecherche du departement  : " + affectationHashMap.rechercherDepartement(d1));
 
         System.out.println( "La liste triée par l id des employes");
         TreeMap<Employe,Departement> sortedMap = affectationHashMap.trierMap();
         for (Map.Entry<Employe, Departement> entry : sortedMap.entrySet()) {
             System.out.println(entry.getKey().getNom() + " -> " + entry.getValue().getNomDep());
         }
+
+        //*************************************************  Prosit 12 *************************************************//
+        StudentManagement studentManagement = new StudentManagement();
+        List studentsList = new ArrayList();
+
+        Student student1=new Student(5,"chakira",21);
+        Student student2=new Student(1,"tork",25);
+        Student student3=new Student(3,"sana",20);
+        studentsList.add(student1);
+        studentsList.add(student3);
+        studentsList.add(student2);
+        studentsList.add(new Student(2,"safa",30));
+        Student student4= studentManagement.createStudent( ()->  new Student(4,"safia",28));
+        studentsList.add(student4);
+        studentManagement.displayStudents(studentsList, (Student student)-> System.out.println(student.toString()));
+        System.out.println("*** Liste des etudiants ayant l'age >25 ***");
+        studentManagement.displayStudentsByFilter(studentsList,(Student student)->  student.getAge()>25,
+                (Student student)->System.out.println(student.toString()));
+        System.out.println("*** Liste des noms des etudiants  ***");
+        System.out.println(studentManagement.returnStudentsNames(studentsList, (Student student) -> student.getNom()));
+        System.out.println("*** Liste des etudiants triée selon l' id   ***");
+         List<Student> listeTriee=studentManagement.sortStudentsById(studentsList, (Student s1,Student s2)-> s1.getId()-s2.getId());
+         for (Student s :listeTriee){
+             System.out.println(s.toString());
+         }
+        studentManagement.convertToStream(studentsList);
+
+
     }
+
 }
